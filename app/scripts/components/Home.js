@@ -14,7 +14,7 @@ class Home extends React.Component {
 
         this.state = {
             product: {
-                display_name: 'Advanced Night Repair Serum Synchronized Multi-Recovery Complex',
+                display_name: 'SUPER AWESOME Advanced Night Repair Serum Synchronized Multi-Recovery Complex',
                 reviews: {
                     average_rating: 4.5,
                     number_of_reviews: 15625
