@@ -1,0 +1,37 @@
+.elc-product-overview {
+  width: 40%;
+
+  h4 {
+     font-family: Optima;
+  }
+
+  // Styles for stars
+  .product-review {
+    //empty stars
+    .stars-outer {
+      display: inline-block;
+      position: relative;
+      font-family: "Material Icons";
+      letter-spacing: -3px;
+    }
+
+    .stars-outer::before {
+      content: "\f0ec\f0ec\f0ec\f0ec\f0ec";
+      color: #7f7f7f;
+    }
+
+    //filled in stars
+    .stars-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .stars-inner::before {
+      content: "\f0ec\f0ec\f0ec\f0ec\f0ec";
+      color: #000;
+    }
+  }
+}
