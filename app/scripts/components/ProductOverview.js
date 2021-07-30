@@ -6,12 +6,16 @@ import React from 'react';
 import ProductReviews from './ProductReviews';
 
 class ProductOverview extends React.Component {
+    // props is automatic
     constructor(props) {
+        //super is needed for constructor
         super(props);
 
+        // components use this.state to "remember" things 
         this.state = {
             quantity: 1,
-            price: this.props.product.default_price
+            price: this.props.product.default_price,
+            afterpay: this.props.product.default_afterpay
         }
     }
 
@@ -27,6 +31,9 @@ class ProductOverview extends React.Component {
         this.setState({
             price: selectedSize.price
         });
+        
+        document.getElementById("prod-price").innerHTML = selectedSize.price;
+        document.getElementById("AFTRPAYTEXT").innerHTML = selectedSize.afterpay;
     }
 
     /**
@@ -36,7 +43,7 @@ class ProductOverview extends React.Component {
         this.setState({
             quantity: this.state.quantity + 1
         })
-    }
+    }   
 
     /**
      * On quantity subtract
@@ -50,13 +57,16 @@ class ProductOverview extends React.Component {
     }
 
     render() {
-        const { display_name, reviews, short_description, sizes, is_replenishable, default_price } = this.props.product;
+        const { display_name1, display_name2, reviews, short_description, sizes, is_replenishable, default_price, default_afterpay } = this.props.product;
 
         return (
             <div className="elc-product-overview">
-                <h4>{display_name}</h4>
+                <h1>{display_name1}</h1>
+                <h4>{display_name2}</h4>
                 <div className="product-review">
+                    <button>
                         <ProductReviews reviews={reviews}/>
+                    </button>
                 </div>
                 <div className="product-short-description">{short_description}</div>
                 <div className="product-size">
@@ -65,23 +75,55 @@ class ProductOverview extends React.Component {
                             return <option key={size.label} value={size.label}>{size.label}</option>
                         })}
                     </select>
+                    <button className="drop-button-container">
+                        <div className="dropdown-button-icon"></div>
+                    </button>
                 </div>
-                <div className="product-price">{default_price}</div>
-                {is_replenishable && <div className="product-auto-replenish">Auto Replenish</div>}
+                <div id="prod-price" className="product-price">{default_price}</div>
+                <div className="auto-repleneish-container">
+                    <div className="auto-repleneish-top-container">
+                        {is_replenishable && <div className="product-auto-replenish">Auto Replenish</div>}
+                        <button className="info-button">
+                            <div className="info"></div>
+                        </button>
+                    </div>
+                    <div className="e-listers-text">E-Listers earn 15 points for each replenishment order!</div>
+                </div>
+
                 <div className="product-qty">
-                    QTY
+                    <div className="qty-text">QTY</div>
                     <div className="quantity buttons_added">
-                    <input type="button" value="-" className="minus" onClick={this.subtractQuantity}/>
+                    <input type="button" value="—" className="minus" ID="MINUS" onClick={this.subtractQuantity}/>
+                    {/* <div className="filler1"></div> */}
                     <input type="number" step="1"
                             value={this.state.quantity}
                             title="Qty"
-                            className="input-text qty text" />
-                    <input type="button" value="+" className="plus" onClick={this.addQuantity}/>
+                            className="input-text qty text"
+                            ID="QTYTEXT"/>
+                    {/* <div className="filler2"></div> */}
+                    <input type="button" value="＋" className="plus" ID="PLUS" onClick={this.addQuantity}/>
+                    
                     </div>
-                    <button>Add To Bag</button>
+                    <button className="add-to-bag">Add To Bag</button>
                 </div>
-                <div className="product-after-pay">afterpay</div>
+                <div className="product-after-pay">
+                    <img src="https://static.afterpay.com/integration/product-page/logo-afterpay-colour.png" className="afterpay-icon"></img>
+                    <button className="afterpay-info-button">
+                        <div className="afterpay-info"></div>
+                    </button>
+                    <br></br>
+                    <div className="afterpay-container">
+                        <div id="AFT">Shop now and pay later with 4 payments of  
+                            <div id="AFTRPAYTEXT" className="afterpay-text">{default_afterpay}</div>
+                        </div>
+                        
+                    </div>
+                </div>
                 <div className="product-promo-message">Free Standard Shipping & Returns</div>
+                <div className="bottom-container">
+                    <div className="engrave">engrave this item</div>
+                    <div className="share">share</div>
+                </div>
             </div>
         );
     }

@@ -14,13 +14,16 @@ class Home extends React.Component {
 
         this.state = {
             product: {
-                display_name: 'SUPER AWESOME Advanced Night Repair Serum Synchronized Multi-Recovery Complex',
+                display_name1: 'Advanced Night Repair Serum',
+                display_name2: 'Synchronized Multi-Recovery Complex',
+                
                 reviews: {
                     average_rating: 4.5,
                     number_of_reviews: 15625
                 },
                 short_description: 'The #1 serum in the U.S.* Fight the look of multiple signs of aging.',
-                default_price: '$105',
+                default_price: '$105.00',
+                default_afterpay: '$26.25',
                 media: [
                     {
                         src: 'img/products/main-product.webp',
@@ -45,16 +48,19 @@ class Home extends React.Component {
                 ],
                 sizes: [
                     {
-                        label: '1.7 oz',
-                        price: '$105'
+                        label: '1.7 oz.',
+                        price: '$105.00',
+                        afterpay: '$26.25'
                     },
                     {
-                        label: '1.0 oz',
-                        price: '$75'
+                        label: '1.0 oz.',
+                        price: '$75.00',
+                        afterpay: '$18.75'
                     },
                     {
-                        label: '3.9 oz',
-                        price: '$200'
+                        label: '3.9 oz.',
+                        price: '$200.00',
+                        afterpay: '$50.00'
                     }
                 ],
                 is_replenishable: true,
@@ -104,8 +110,9 @@ class Home extends React.Component {
 
 
                     <div className="elc-product-info">
-                        <ProductDetails description={product.description}/>
                         <ProductAttributes attributes={product.attributes}/>
+                        <ProductDetails description={product.description}/>
+                        
                     </div>
 
                 </div>

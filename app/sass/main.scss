@@ -21,11 +21,18 @@ $siteWidth: 1280px;
 
 html, html * {
     box-sizing: border-box; padding: 0; margin: 0;
+    
 }
 
 // These are used to ensure the app runs full display
 html, body {
     width: 100%; height: 100%;
+
+    @include responsive(phone) {
+        // background-color: rgb(117, 24, 40);
+        width: 100%;
+        height: 100%;
+    }
 }
 
 // Main body content
@@ -37,6 +44,13 @@ main {
     display: block;
     position: relative;
     font-family: Akziden;
+    @include responsive(phone) {
+        // background-color: rgb(117, 24, 40);
+        width: 100%;
+        height: 100%;
+    }
+    
+    
 
     * {
         -webkit-font-smoothing: antialiased;
@@ -58,7 +72,8 @@ main {
     div.inner { 
         width: 100%;
         height: auto;
-        background-color: rgb(150, 0, 0);
+        background-color: #040a2b;
+        
     }
 
 }
